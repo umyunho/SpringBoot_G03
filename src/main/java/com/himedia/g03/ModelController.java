@@ -53,5 +53,43 @@ public class ModelController {
 
         return mav;
     }
-    
+
+    String name1;
+    String name2;
+
+    @GetMapping("/test3")
+    public String test3(HttpServletRequest request, Model model) {
+        //메서드의 리턴이 jsp파일이 아니라 다른 request를 요청해야할때
+        //request.setAttribute("name1","홍길동");
+        //model.addAttribute("name2","김하나")
+        name1 = "홍길동";
+        name2 = "김하나";
+        return "redirect:/test4";
+
+    }
+
+    @GetMapping("/test4")
+    public String test4(HttpServletRequest request, Model model) {
+        //String name1 = (String)request.getAttribute("name1");
+        //String name2 = (String)request.getAttribute("name2");
+
+        //request.setAttribute("name1", name1);
+        //model.addAttribute("name2", name2);
+
+        model.addAttribute("name1",name1);
+        request.setAttribute("name2",name2);
+
+        return "test4";
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
